@@ -1,35 +1,24 @@
 spring:
   cloud:
     config:
-      profile: dev
       label: master
-      username: 664507439@qq.com
-      password: wu15180180820
-      fail-fast: true
-      retry:
-        # 下一间隔的乘数，当初始间隔为1000ms时，下一次间隔就为1100ms
-        multiplier: 1.1
-        # 初始重试时间
-        initial-interval: 1000
-        # 最大间隔时间
-        max-interval: 2000
-        # 最大重试次数
-        max-attempts: 6
       discovery:
         enabled: true
         service-id: config-server
-  application:
-    name: didispace
-  rabbitmq:
+      profile: dev
+      fail-fast: true
+    bus:
+      trace:
+        enabled: true  #开启消息跟踪
+application:
+    name: config-client
+rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
     password: 123456
 server:
   port: 8887
-management:
-  security:
-    enabled: false
 eureka:
   client:
     serviceUrl:
